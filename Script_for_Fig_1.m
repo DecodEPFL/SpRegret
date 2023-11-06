@@ -26,7 +26,7 @@ regret_QI = controllers.regret;
 regret_centr = controllers.regret_centr;
 
 sls.sigma_w = 1;
-n_max_counters = 1e2;
+n_max_counters = 1e3;
 n_max_confidence = 1e2;
 x0_val = zeros(sls.n,1);
 
