@@ -30,7 +30,7 @@ The repository also aims to provide a Python version soon.
 
 ### 1. Main Script (`main.m`)
 
-The `main.m` script is the main entry point for running the synthesis of the controllers. In this script, you can set the linear system to control and the sparsity matrix $S$. Execute the script to obtain the controllers H2, Hinf, SpRegret with $\mathcal{K}_{QI}$, and SpRegret with $\mathcal{K}_{C}$.
+The `main.m` script is the main entry point for running the synthesis of the controllers. In this script, you can set the linear system to control and the sparsity matrix $S$. Execute the script to obtain the controllers H2, Hinf, SpRegret with $\mathbf{K}_{QI}$, and SpRegret with $\mathbf{K}_{C}$.
 
 ### 2. Script for Figure 1 (`Script_for_Fig_1.m`)
 
@@ -41,8 +41,7 @@ This script generates Figure 1 from the paper. It utilizes the Parallel Computin
 Similar to Figure 1, this script generates Figure 2 from the paper. If the Parallel Computing Toolbox is not available, replace the "parfor" in line 43 with a regular "for."
 
 ## License
-
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the Apache License 2.0.
 
 ## Acknowledgments
 
