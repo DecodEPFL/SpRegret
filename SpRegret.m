@@ -1,5 +1,31 @@
 function [controllers] = SpRegret(sls,opt,Sreal,Shat,verbose)
+%   The function performs the following steps:
+%       1. Computes the binary matrices Vx and Vx_hat for the real sparsity matrix and its QI superset.
+%       2. Synthesizes the following controllers as described in the paper work:
+%          - Centralized controller
+%          - Oracle controller
+%          - H2 controller
+%          - Hinf controller
+%          - Regret controller with QI benchmark
+%          - Regret controller with centralized benchmark
+%   Input arguments:
+%       - sls: Struct containing system information.
+%       - opt: Struct containing optimization settings.
+%       - Sreal: Real system Sparsity Matrix.
+%       - Shat: Nearest QI superset.
+%       - verbose: Binary flag for verbose output (1/0).
+%
+%   Output:
+%       - controllers: Struct containing synthesized control policies.
 
+%   Example usage:
+%       opt.verbose = true;
+%       controllers = SpRegret(sls, opt, Sreal, Shat, 1);
+%
+%   See also FIND_SI, CALCULUS_CENTRALIZED, CALCULUS_BENCHMARK, CALCULUS_REGRET.
+
+% Author: Daniele Martinelli [daniele.martinelli@epfl.ch]
+        
 
 
 sls.Sreal = Sreal;

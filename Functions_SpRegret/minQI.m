@@ -1,4 +1,22 @@
 function Smin = minQI(obj, S_0, iterations)
+    % MINQI - Finds the minimal QI superset for a given set S_0.
+%
+%   Smin = minQI(obj, S_0, iterations)
+
+%   The superset is determined based on the system properties stored in the 'obj' object. 
+%   It should **NOT BE USED** by itself, but as a private function of CLOSEST_QI
+%
+%   Input arguments:
+%       - obj: Object containing system information (e.g., matrices I, Z, A, B).
+%       - S_0: Binary matrix representing the initial set.
+%       - iterations: (Optional) Maximum number of iterations for finding the closest QI superset.
+%                     Default value is -1 (unlimited iterations).
+%
+%   Output:
+%       - Smin: Binary matrix representing the minimal QI superset for the given S_0.
+%
+%   See also CLOSEST_QI.
+
     if nargin<3
         iterations = -1;
     else

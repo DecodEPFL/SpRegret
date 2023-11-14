@@ -1,4 +1,24 @@
 function [Phi_x, Phi_u, obj_h2, obj_hinf] = calculus_benchmark(sls, opt,is_oracle, norm_type, verbose)
+% CALCULUS_BENCHMARK - Synthesizes benchmark control policies H2, Hinf, Oracles, using optimization techniques.
+%
+%   This function synthesizes benchmark control policies as reported in the paper work.
+%   It generates state and input matrices (Phi_x and Phi_u) and evaluates
+%   the performance in terms of H2 and Hinf norms.
+%
+%   Input arguments:
+%       - sls: Struct containing system information.
+%       - opt: Struct containing optimization settings.
+%       - is_oracle: Boolean indicating whether to use the oracle sparsity structure or real system's one.
+%       - norm_type: String specifying the norm type ('fro' for Frobenius, 'inf' for Hinf).
+%       - verbose: Boolean flag for verbose output during optimization.
+%
+%   Output:
+%       - Phi_x: State matrix for the synthesized controller.
+%       - Phi_u: Input matrix for the synthesized controller.
+%       - obj_h2: H2 norm performance of the synthesized controller.
+%       - obj_hinf: Hinf norm performance of the synthesized controller.
+%
+%   See also SDPVAR, SDPSETTINGS, YALMIPERROR.
 
 
     vector_Phi_u = sdpvar(sls.m*opt.N_tf, sls.n, 'full');

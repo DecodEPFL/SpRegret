@@ -1,5 +1,30 @@
 function [Phi_x, Phi_u, objective,obj_h2,obj_hinf] = calculus_regret(sls, opt, Benchmark,verbose)
+% CALCULUS_REGRET - Synthesizes a regret-based control policy using the optimization technique reported in the paper work.
+%
+%   This function synthesizes a regret-based control policy for a given system using the optimization technique reported in the paper work. It generates state and input matrices (Phi_x and Phi_u) and evaluates the performance
+%   The optimization objective is to minimize the maximum eigenvalue
+%   of the augmented cost matrix to induce regret.
+%
+%   Input arguments:
+%       - sls: Struct containing system information.
+%       - opt: Struct containing optimization settings.
+%       - Benchmark: Struct containing benchmark control policy information.
+%       - verbose: Boolean flag for verbose output during optimization.
+%
+%   Output:
+%       - Phi_x: State matrix for the synthesized regret-based controller.
+%       - Phi_u: Input matrix for the synthesized regret-based controller.
+%       - objective: The maximum eigenvalue of the augmented cost matrix.
+%       - obj_h2: H2 norm performance of the synthesized controller.
+%       - obj_hinf: Hinf norm performance of the synthesized controller.
+%
+%   The function utilizes YALMIP for optimization, formulating constraints based on the chosen norms
+%   and benchmark control policy. It aims to minimize the maximum eigenvalue to induce regret in the
+%   synthesized controller.
+%
+%   See also SDPVAR, SDPSETTINGS, YALMIPERROR.
 
+% Author: Daniele Martinelli [daniele.martinelli@epfl.ch]
     vector_Phi_u = sdpvar(sls.m*opt.N_tf, sls.n, 'full');
 
     temp = eye(opt.T);

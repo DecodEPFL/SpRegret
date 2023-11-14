@@ -1,4 +1,15 @@
-%% Numerical experiments: comparison between time-averaged incurred control cost
+%   Script used to generate Figure 1 reported in the paper.
+%
+%   This script synthesizes and compares different control policies for a dynamic system
+%   with variable mass affected by external disturbances. The system has multiple masses,
+%   and the objective is to study the performance of controllers under varying degrees
+%   of mass disturbance. The script evaluates the performance of H2, Hinf, Regret QI, and
+%   Regret Centralized controllers and compares their results.
+%
+%   Note: Ensure that the required functions and controllers are available in the specified
+%   folders ('./Functions_SpRegret' and './Synthesized_Controllers').
+%
+%   Author: Daniele Martinelli [daniele.martinelli@epfl.ch]
 clc;close all; clear;
 addpath('./Functions_SpRegret') % Add path to the folder with auxiliary functions
 addpath('./Synthesized_Controllers') % Add path to the folder with synthesized controllers

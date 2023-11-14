@@ -1,5 +1,29 @@
 function parameters = create_params(n_masses, K, C, fr, mass)
-    % Set default values if not provided
+% CREATE_PARAMS - Creates a struct of system parameters for a multi-mass system.
+%
+%   This function generates a struct containing system parameters for a multi-mass system,
+%   including spring constants, damping coefficients, friction values, and masses. Default
+%   values are used if specific parameters are not provided.
+%
+%   Input arguments:
+%       - n_masses: Number of masses in the system.
+%       - K: Spring constant (default: 2.0).
+%       - C: Damping coefficient (default: 0.2).
+%       - fr: Friction value (default: 3.0).
+%       - mass: Mass value (default: 2.0).
+%
+%   Output:
+%       - parameters: Struct containing system parameters (K, C, Fr, M).
+%
+%   The function allows customization of the system parameters by providing specific values
+%   for spring constant (K), damping coefficient (C), friction value (fr), and mass (mass).
+%   If not specified, default values are used with optional random variation (controlled by std).
+
+%
+%   See also RANDN.
+
+% Author: Daniele Martinelli [daniele.martinelli@epfl.ch]
+
     if nargin < 2
         K = 2.0;
     end

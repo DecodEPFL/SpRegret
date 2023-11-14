@@ -1,5 +1,30 @@
 function [F, G, H, I] = mass_spring_damper_system(n_agents, T_s, vals, method)
-    % Set default value for method if not provided
+% MASS_SPRING_DAMPER_SYSTEM - Generates a discrete-time state-space representation
+%                             for a multi-agent mass-spring-damper system.
+%
+%   This function generates a discrete-time state-space representation for a
+%   multi-agent mass-spring-damper system. The system is modeled by a set of
+%   interconnected masses, springs, and dampers. The resulting state-space matrices
+%   (F, G, H, I) define the system dynamics.
+%
+%   Input arguments:
+%       - n_agents: Number of agents (masses) in the system.
+%       - T_s: Sampling time for discretization.
+%       - vals: Struct containing system parameters (K, C, Fr, M).
+%       - method: (Optional) Discretization method (default: 'zoh').
+%
+%   Output:
+%       - F: State-transition matrix.
+%       - G: Input matrix.
+%       - H: Output matrix.
+%       - I: Feedforward matrix.
+%
+%   The function constructs the state-space matrices (F, G, H, I) based on the
+%   parameters provided in the 'vals' struct. The system dynamics are discretized
+%   using the specified method (default: 'zoh') with the given sampling time T_s.
+%
+%   See also SS, C2D.
+
     if nargin < 4
         method = 'zoh';
     end
@@ -36,8 +61,4 @@ function [F, G, H, I] = mass_spring_damper_system(n_agents, T_s, vals, method)
     G = system_DT.B;
     H = system_DT.C;
     I = system_DT.D;
-    % F = A*T_s + eye(size(A));
-    % G = B*T_s;
-    % H = C;
-    % I = D;
 end

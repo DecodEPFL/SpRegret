@@ -1,6 +1,16 @@
-function [result] = is_QI(Kbin,G)
-%IS_QI Summary of this function goes here
-%   Detailed explanation goes here
+function [result] = is_QI(S,G)
+% IS_QI - Checks if a binary matrix S satisfies the Quantum-Inspired (QI) condition.
+%
+%   This function checks whether a given binary matrix S satisfies the Quadratic Invariance
+%   condition with respect to a given matrix G.
+%
+%   Input arguments:
+%       - S: Sparsity Matrix.
+%       - G: Matrix used to define the QI condition.
+%
+%   Output:
+%       - result: Boolean indicating whether S satisfies the QI condition (true) or not (false).
+%   See also RANDI.
 result = true;
 [ny,nu] = size(G);
 G_bin = bin(G);
@@ -12,7 +22,7 @@ while(i<=ny && result)
         while(j<=nu && result)
             k = 1;
             while(k <= nu && result)
-                check = Kbin(k,i)*G_bin(i,j)*Kbin(j,l)*(1-Kbin(k,l));
+                check = S(k,i)*G_bin(i,j)*S(j,l)*(1-S(k,l));
                 if (check == 1)
                     %QI condition is not satisfied!!
                     result = false;
